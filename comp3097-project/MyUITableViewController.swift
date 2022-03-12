@@ -8,11 +8,15 @@
 import UIKit
 
 class MyUITableViewController: UITableViewController {
-
+    
+    /*
     var tempData = [
         Restaurant(name: "McDonalds", address: "123 Street", cuisine: "Fast Food", description: "It's okay", phonenumber: "123-456-7890", rating: 3.5, tags: ["fast food", "burgers", "nuggets"]),
         Restaurant(name: "Wendy's", address: "4 Lane", cuisine: "Food", description: "it's good", phonenumber: "123", rating: 4, tags: ["spicy chicken", "fries"])
     ]
+     */
+    let cdMgr = CDManager.shared
+    var tempData:[Restaurant] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +26,13 @@ class MyUITableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        //cdMgr.saveRestaurant(id: 1, name: "Restaurant")
+        tempData = cdMgr.loadRestaurants()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tempData = cdMgr.loadRestaurants()
+        self.tableView.reloadData()
     }
 
     // MARK: - Table view data source
@@ -73,6 +84,7 @@ class MyUITableViewController: UITableViewController {
         }    
     }
     */
+    
 
     /*
     // Override to support rearranging the table view.
@@ -89,14 +101,18 @@ class MyUITableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "add" {
+            let dest = segue.destination as! AddEditViewController
+            dest.action = "add"
+        }
     }
-    */
+    
 
 }

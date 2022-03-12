@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19461" systemVersion="20G165" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Restaurant" representedClassName="Restaurant" syncable="YES" codeGenerationType="class">
+        <attribute name="address" optional="YES" attributeType="String"/>
+        <attribute name="cuisine" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="phonenumber" optional="YES" attributeType="String"/>
+        <attribute name="rating" optional="YES" attributeType="Integer 32" minValueString="0" maxValueString="5" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="restaurantDescription" optional="YES" attributeType="String"/>
+        <relationship name="hasATag" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tag" inverseName="restaurantTag" inverseEntity="Tag"/>
+    </entity>
+    <entity name="Tag" representedClassName="Tag" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="restaurantTag" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Restaurant" inverseName="hasATag" inverseEntity="Restaurant"/>
+    </entity>
+    <elements>
+        <element name="Restaurant" positionX="-460.34375" positionY="-37.33203125" width="128" height="149"/>
+        <element name="Tag" positionX="-54" positionY="36" width="128" height="88"/>
+    </elements>
+</model>

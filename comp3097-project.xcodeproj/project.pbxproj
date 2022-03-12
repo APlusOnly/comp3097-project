@@ -9,27 +9,29 @@
 /* Begin PBXBuildFile section */
 		0433A2D927D424F0009BBCBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0433A2D827D424F0009BBCBF /* AppDelegate.swift */; };
 		0433A2DB27D424F0009BBCBF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0433A2DA27D424F0009BBCBF /* SceneDelegate.swift */; };
-		0433A2DD27D424F0009BBCBF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0433A2DC27D424F0009BBCBF /* ViewController.swift */; };
 		0433A2E027D424F0009BBCBF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0433A2DE27D424F0009BBCBF /* Main.storyboard */; };
 		0433A2E227D424F0009BBCBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0433A2E127D424F0009BBCBF /* Assets.xcassets */; };
 		0433A2E527D424F0009BBCBF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0433A2E327D424F0009BBCBF /* LaunchScreen.storyboard */; };
 		0465888B27D68C0F0025FF2B /* MyUITableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0465888A27D68C0F0025FF2B /* MyUITableViewController.swift */; };
-		0465888D27D68C730025FF2B /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0465888C27D68C730025FF2B /* Restaurant.swift */; };
 		0465888F27D68EBB0025FF2B /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0465888E27D68EBB0025FF2B /* DetailViewController.swift */; };
+		047CB2C227D80D13002FA190 /* AddEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047CB2C127D80D13002FA190 /* AddEditViewController.swift */; };
+		04BAB6CF27DD410500E965AC /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 04BAB6CD27DD410500E965AC /* Model.xcdatamodeld */; };
+		04BAB6D127DD484600E965AC /* CDManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BAB6D027DD484600E965AC /* CDManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0433A2D527D424F0009BBCBF /* comp3097-project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "comp3097-project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0433A2D827D424F0009BBCBF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0433A2DA27D424F0009BBCBF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		0433A2DC27D424F0009BBCBF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0433A2DF27D424F0009BBCBF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0433A2E127D424F0009BBCBF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0433A2E427D424F0009BBCBF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0433A2E627D424F0009BBCBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0465888A27D68C0F0025FF2B /* MyUITableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyUITableViewController.swift; sourceTree = "<group>"; };
-		0465888C27D68C730025FF2B /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		0465888E27D68EBB0025FF2B /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		047CB2C127D80D13002FA190 /* AddEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditViewController.swift; sourceTree = "<group>"; };
+		04BAB6CE27DD410500E965AC /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		04BAB6D027DD484600E965AC /* CDManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +48,7 @@
 		0433A2CC27D424F0009BBCBF = {
 			isa = PBXGroup;
 			children = (
+				04BAB6CD27DD410500E965AC /* Model.xcdatamodeld */,
 				0433A2D727D424F0009BBCBF /* comp3097-project */,
 				0433A2D627D424F0009BBCBF /* Products */,
 			);
@@ -64,14 +67,14 @@
 			children = (
 				0433A2D827D424F0009BBCBF /* AppDelegate.swift */,
 				0433A2DA27D424F0009BBCBF /* SceneDelegate.swift */,
-				0433A2DC27D424F0009BBCBF /* ViewController.swift */,
 				0433A2DE27D424F0009BBCBF /* Main.storyboard */,
+				047CB2C127D80D13002FA190 /* AddEditViewController.swift */,
 				0465888A27D68C0F0025FF2B /* MyUITableViewController.swift */,
 				0465888E27D68EBB0025FF2B /* DetailViewController.swift */,
-				0465888C27D68C730025FF2B /* Restaurant.swift */,
 				0433A2E127D424F0009BBCBF /* Assets.xcassets */,
 				0433A2E327D424F0009BBCBF /* LaunchScreen.storyboard */,
 				0433A2E627D424F0009BBCBF /* Info.plist */,
+				04BAB6D027DD484600E965AC /* CDManager.swift */,
 			);
 			path = "comp3097-project";
 			sourceTree = "<group>";
@@ -147,11 +150,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0465888D27D68C730025FF2B /* Restaurant.swift in Sources */,
-				0433A2DD27D424F0009BBCBF /* ViewController.swift in Sources */,
+				047CB2C227D80D13002FA190 /* AddEditViewController.swift in Sources */,
+				04BAB6CF27DD410500E965AC /* Model.xcdatamodeld in Sources */,
 				0433A2D927D424F0009BBCBF /* AppDelegate.swift in Sources */,
 				0465888F27D68EBB0025FF2B /* DetailViewController.swift in Sources */,
 				0433A2DB27D424F0009BBCBF /* SceneDelegate.swift in Sources */,
+				04BAB6D127DD484600E965AC /* CDManager.swift in Sources */,
 				0465888B27D68C0F0025FF2B /* MyUITableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -370,6 +374,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		04BAB6CD27DD410500E965AC /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				04BAB6CE27DD410500E965AC /* Model.xcdatamodel */,
+			);
+			currentVersion = 04BAB6CE27DD410500E965AC /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 0433A2CD27D424F0009BBCBF /* Project object */;
 }
