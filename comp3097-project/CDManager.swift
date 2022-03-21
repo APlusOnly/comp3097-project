@@ -31,6 +31,26 @@ class CDManager {
         return persistentContainer.newBackgroundContext()
     }
     
+    // RESTAURANTS
+    func deleteRestaurant(res: Restaurant){
+        let context = persistentContainer.viewContext
+        context.delete(res)
+        
+        do{
+            try context.save()
+        } catch{
+            debugPrint(error)
+        }
+    }
+    
+    func updateRestaurant() {
+        do{
+            try persistentContainer.viewContext.save()
+        }catch{
+            debugPrint(error)
+        }
+    }
+    
     func loadRestaurants() -> [Restaurant] {
         let mainContext = CDManager.shared.mainContext
         
@@ -45,6 +65,37 @@ class CDManager {
         
         return []
     }
+    
+    func getRestaurantByName(name: String) -> [Restaurant]{
+        let mainContext = CDManager.shared.mainContext
+        
+        let request = NSFetchRequest<Restaurant>(entityName: "Restaurant")
+        request.predicate = NSPredicate(format: "name = %@", name)
+        
+        do {
+            let fetchResults = try mainContext.fetch(request)
+            return fetchResults
+        } catch {
+            print(error)
+        }
+        return []
+    }
+    
+    func getRestaurantById(id: NSManagedObjectID) -> Restaurant?{
+        let mainContext = CDManager.shared.mainContext
+        
+        let request = NSFetchRequest<Restaurant>(entityName: "Restaurant")
+        request.predicate = NSPredicate(format: "SELF = %@", id)
+        
+        do {
+            let fetchResults = try mainContext.fetch(request)
+            return fetchResults[0]
+        } catch {
+            print(error)
+        }
+        return nil
+    }
+
     
     func saveRestaurant(id: Int32, name: String, address: String, cuisine: String, phonenumber: String, desc: String, rating: Int32) {
         let context = CDManager.shared.backgroundContext()
@@ -64,11 +115,39 @@ class CDManager {
         }
     }
     
+    // TAGS
     func loadRestaurantTags() -> [Tag] {
          return []
     }
     
-    func saveRestaurantTag() {
+    func saveRestaurantTag(res: Restaurant?, tagName: String) {
+        let context = CDManager.shared.mainContext
+        let entity = Tag.entity()
+        let tag = Tag(entity: entity, insertInto: context)
+        tag.name = tagName
+        res?.addToTag(tag)
+
+        do{
+            try context.save()
+        } catch{
+            debugPrint(error)
+        }
+
+    }
+    
+    func getTagsByName(name: String) -> [Tag] {
+        let mainContext = CDManager.shared.mainContext
         
+        let request = NSFetchRequest<Tag>(entityName: "Restaurant")
+        request.predicate = NSPredicate(format: "name = %@", name)
+        
+        do {
+            let fetchResults = try mainContext.fetch(request)
+            return fetchResults
+        } catch {
+            print(error)
+        }
+        return []
+
     }
 }
