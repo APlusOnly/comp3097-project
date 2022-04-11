@@ -12,6 +12,7 @@
 		0433A2E027D424F0009BBCBF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0433A2DE27D424F0009BBCBF /* Main.storyboard */; };
 		0433A2E227D424F0009BBCBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0433A2E127D424F0009BBCBF /* Assets.xcassets */; };
 		0433A2E527D424F0009BBCBF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0433A2E327D424F0009BBCBF /* LaunchScreen.storyboard */; };
+		04468CB228047797004604C0 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04468CB128047797004604C0 /* MapViewController.swift */; };
 		0465888F27D68EBB0025FF2B /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0465888E27D68EBB0025FF2B /* DetailViewController.swift */; };
 		047CB2C227D80D13002FA190 /* AddEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047CB2C127D80D13002FA190 /* AddEditViewController.swift */; };
 		04B8BB8B27E8BD6D001992A4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B8BB8A27E8BD6D001992A4 /* MainViewController.swift */; };
@@ -27,6 +28,7 @@
 		0433A2E127D424F0009BBCBF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0433A2E427D424F0009BBCBF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0433A2E627D424F0009BBCBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04468CB128047797004604C0 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		0465888E27D68EBB0025FF2B /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		047CB2C127D80D13002FA190 /* AddEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEditViewController.swift; sourceTree = "<group>"; };
 		04B8BB8A27E8BD6D001992A4 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 				04B8BB8A27E8BD6D001992A4 /* MainViewController.swift */,
 				047CB2C127D80D13002FA190 /* AddEditViewController.swift */,
 				0465888E27D68EBB0025FF2B /* DetailViewController.swift */,
+				04468CB128047797004604C0 /* MapViewController.swift */,
 				0433A2E127D424F0009BBCBF /* Assets.xcassets */,
 				0433A2E327D424F0009BBCBF /* LaunchScreen.storyboard */,
 				0433A2E627D424F0009BBCBF /* Info.plist */,
@@ -157,6 +160,7 @@
 				0433A2DB27D424F0009BBCBF /* SceneDelegate.swift in Sources */,
 				04BAB6D127DD484600E965AC /* CDManager.swift in Sources */,
 				04B8BB8B27E8BD6D001992A4 /* MainViewController.swift in Sources */,
+				04468CB228047797004604C0 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

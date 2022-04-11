@@ -27,15 +27,6 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </navigationBar>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G7q-YN-bCr">
-                                <rect key="frame" x="125" y="88" width="165" height="39"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Edit"/>
-                                <connections>
-                                    <segue destination="cMh-K9-WeS" kind="presentation" identifier="edit" modalPresentationStyle="fullScreen" id="bgz-2H-54V"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="cuisine" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VcI-nr-LCD">
                                 <rect key="frame" x="20" y="258" width="152" height="49"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -64,13 +55,44 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="20" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RhI-q4-gx8">
+                                <rect key="frame" x="32" y="623" width="350" height="165"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemGray4Color"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tags" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WGX-on-PIz">
+                                <rect key="frame" x="32" y="581" width="57" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cFf-sf-M2J">
+                                <rect key="frame" x="255" y="92" width="99" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Maps"/>
+                                <connections>
+                                    <segue destination="5cy-4d-OIW" kind="presentation" identifier="viewMap" modalPresentationStyle="fullScreen" id="8nJ-17-rbt"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G7q-YN-bCr">
+                                <rect key="frame" x="32" y="88" width="82" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Edit"/>
+                                <connections>
+                                    <segue destination="cMh-K9-WeS" kind="presentation" identifier="edit" modalPresentationStyle="fullScreen" id="bgz-2H-54V"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="LQA-pd-Zxc"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <toolbarItems>
-                        <barButtonItem title="Item" id="C6D-Hi-Yv4"/>
-                    </toolbarItems>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" id="ZPm-U2-yvp"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -79,6 +101,7 @@
                         <outlet property="descriptionLabel" destination="Bp4-ab-54l" id="f2c-b6-Kub"/>
                         <outlet property="nameLabel" destination="MEp-oi-jeV" id="ukg-Wb-TCw"/>
                         <outlet property="phonenumberLabel" destination="wGk-yz-DMk" id="Lfm-YA-Lv5"/>
+                        <outlet property="taglabel" destination="RhI-q4-gx8" id="Xyq-An-J61"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gWC-St-rA2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -183,10 +206,10 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Lab2" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="20" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oA3-gT-ggw">
-                                <rect key="frame" x="32" y="638" width="350" height="165"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="20" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oA3-gT-ggw">
+                                <rect key="frame" x="32" y="673" width="350" height="165"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.28495060700000002" green="0.2530233985" blue="0.78039215689999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" systemColor="systemGray4Color"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -206,6 +229,25 @@
                                     <action selector="addTag:" destination="cMh-K9-WeS" eventType="touchUpInside" id="vzt-m3-GeW"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tags" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y5E-MT-kr8">
+                                <rect key="frame" x="49" y="623" width="57" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1.5" minValue="0.0" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="Adg-FO-yC2">
+                                <rect key="frame" x="148" y="458" width="166" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="minimumTrackTintColor" red="0.2442889348" green="0.54875689770000002" blue="0.78039215689999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aPt-UT-qhl">
+                                <rect key="frame" x="340" y="454" width="42" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="x66-LD-bZo"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -214,7 +256,9 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="wcx-5g-zV2"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="lblRating" destination="aPt-UT-qhl" id="SM1-84-FcC"/>
                         <outlet property="lblTag" destination="oA3-gT-ggw" id="wM8-PM-vrU"/>
+                        <outlet property="ratingSlider" destination="Adg-FO-yC2" id="eXG-ca-I6i"/>
                         <outlet property="txtAddress" destination="8HJ-eD-Wj6" id="fkq-Ww-WvH"/>
                         <outlet property="txtCuisine" destination="gRW-gV-MNz" id="diQ-hV-AtR"/>
                         <outlet property="txtDescription" destination="guU-FZ-cF3" id="9ON-HE-dhA"/>
@@ -226,6 +270,46 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WLd-AG-ZVY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="360.86956521739131" y="81.696428571428569"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="yfi-Jm-2xd">
+            <objects>
+                <viewController storyboardIdentifier="MapViewController" id="5cy-4d-OIW" customClass="MapViewController" customModule="comp3097_project" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="C2k-Ji-ys6">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Map" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KOM-ej-Nmf">
+                                <rect key="frame" x="186" y="94" width="34" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="FHV-Qr-hl1">
+                                <rect key="frame" x="36" y="217" width="336" height="564"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CrH-84-mR0">
+                                <rect key="frame" x="264" y="143" width="67" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                                <connections>
+                                    <action selector="getDirectionsButton:" destination="5cy-4d-OIW" eventType="touchUpInside" id="iws-f6-RCE"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6W8-Hw-bTq"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="FHV-Qr-hl1" id="lDk-Ry-VlG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8YJ-W5-239" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1234.7826086956522" y="568.52678571428567"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="6su-zS-b3S">
@@ -285,7 +369,7 @@
                                 </items>
                             </navigationBar>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jtX-a5-F74">
-                                <rect key="frame" x="224" y="155" width="190" height="34"/>
+                                <rect key="frame" x="78" y="153" width="190" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -293,6 +377,15 @@
                                     <action selector="search:" destination="N3e-3C-vLd" eventType="editingDidEnd" id="Ke2-zY-jPM"/>
                                 </connections>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ubw-lG-IbM">
+                                <rect key="frame" x="295" y="155" width="90" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Search"/>
+                                <connections>
+                                    <action selector="search:" destination="N3e-3C-vLd" eventType="touchUpInside" id="Tam-VW-kEb"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="YfS-gv-iJv"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -334,11 +427,14 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="10C-Eu-Tr0"/>
+        <segue reference="bgz-2H-54V"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

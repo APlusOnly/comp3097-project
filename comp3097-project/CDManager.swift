@@ -115,6 +115,20 @@ class CDManager {
         }
     }
     
+    func searchRestaurantByName(name: String) -> [Restaurant]{
+        let mainContext = CDManager.shared.mainContext
+        
+        let request = NSFetchRequest<Restaurant>(entityName: "Restaurant")
+        request.predicate = NSPredicate(format: "name CONTAINS %@ OR cuisine CONTAINS %@", argumentArray: [name, name])
+        do {
+            let fetchResults = try mainContext.fetch(request)
+            return fetchResults
+        } catch {
+            print(error)
+        }
+        return []
+    }
+    
     // TAGS
     func loadRestaurantTags() -> [Tag] {
          return []
@@ -135,10 +149,12 @@ class CDManager {
 
     }
     
+    
+    
     func getTagsByName(name: String) -> [Tag] {
         let mainContext = CDManager.shared.mainContext
         
-        let request = NSFetchRequest<Tag>(entityName: "Restaurant")
+        let request = NSFetchRequest<Tag>(entityName: "Tag")
         request.predicate = NSPredicate(format: "name = %@", name)
         
         do {

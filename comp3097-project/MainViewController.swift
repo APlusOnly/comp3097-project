@@ -23,8 +23,17 @@ class MainViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        //data = cdMgr.loadRestaurants()
+        data = cdMgr.loadRestaurants()
+        self.tableView.reloadData()
         
+    }
+    
+    @IBAction func search(_ sender: Any) {
+        let searchParam = searchText.text
+        if let unwrappedSearch = searchParam {
+            data = cdMgr.searchRestaurantByName(name: unwrappedSearch)
+            self.tableView.reloadData()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -32,7 +41,6 @@ class MainViewController: UIViewController {
         self.tableView.reloadData()
     }
 
-    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

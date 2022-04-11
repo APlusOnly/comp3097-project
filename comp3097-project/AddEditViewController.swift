@@ -23,6 +23,8 @@ class AddEditViewController: UIViewController {
     @IBOutlet weak var txtDescription: UITextField!
     @IBOutlet weak var txtPhonenumber: UITextField!
     @IBOutlet weak var txtTag: UITextField!
+    @IBOutlet weak var ratingSlider: UISlider!
+    @IBOutlet weak var lblRating: UILabel!
     
     @IBOutlet weak var lblTag: UILabel!
     
@@ -39,7 +41,10 @@ class AddEditViewController: UIViewController {
                 txtAddress.text = restaurant?.address
                 txtDescription.text = restaurant?.restaurantDescription
                 txtPhonenumber.text = restaurant?.phonenumber
-                
+                if let unwrappedRating = restaurant?.rating{
+                    ratingSlider.value = Float(unwrappedRating)
+                    lblRating.text = String(unwrappedRating)
+                }
                 let tags = restaurant?.tag?.allObjects
                 var tagsToDisplay = ""
                 for tag in tags ?? [] {
@@ -59,7 +64,7 @@ class AddEditViewController: UIViewController {
     }
     
     @IBAction func addTag(_ sender: Any) {
-        if let text = txtTag.text, !text.isEmpty {
+        if let text = txtTag.text {
             // txtTag not empty
             cdMgr.saveRestaurantTag(res: restaurant, tagName: text)
             print("clicked")
