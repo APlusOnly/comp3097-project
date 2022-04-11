@@ -13,6 +13,8 @@ class MainViewController: UIViewController {
     @IBOutlet weak var searchText: UITextField!
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet var cuisineLabel: UILabel!
+    
     let cdMgr = CDManager.shared
     var data:[Restaurant] = []
 
@@ -76,6 +78,7 @@ extension MainViewController: UITableViewDataSource {
 
         // Configure the cell...
         cell.textLabel?.text = data[indexPath.row].name
+        //cell.cuisineLabel.text = data[indexPath.row].cuisine
 
         return cell
     }

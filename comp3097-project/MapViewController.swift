@@ -25,10 +25,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        locationManager.delegate = self
+        
         self.setMapView()
         
         locationManager.requestWhenInUseAuthorization()
-        locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locationManager.startUpdatingLocation()
         
@@ -77,6 +80,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
     
     func getDirections() {
         if let destCoordinate = self.pointAnnotation.coordinate as? CLLocationCoordinate2D {
+            
             let sourceCoordinate = (locationManager.location?.coordinate)!
             
             let sourcePlaceMark = MKPlacemark(coordinate: sourceCoordinate)
@@ -89,32 +93,34 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
             destinationRequest.source = sourceItem
             destinationRequest.destination = destItem
             destinationRequest.transportType = .automobile
-            destinationRequest.requestsAlternateRoutes = true
+            //destinationRequest.requestsAlternateRoutes = true
+            
             
             let directions = MKDirections(request: destinationRequest)
-            directions.calculate(completionHandler: { (response, error) in
-                guard let response = response else {
-                    if let error = error {
-                        print("something is wrong")
-                    }
-                    return
-                }
-                let route = response.routes[0]
-                self.mapView.addOverlay(route.polyline)
-                self.mapView.setVisibleMapRect(route.polyline.boundingMapRect, animated: true)
-            })
-        }
+            
+            directions.calculate { [unowned self] response, error in
+                guard let unwrappedResponse = response else { return }
 
+                for route in unwrappedResponse.routes {
+                    self.mapView.addOverlay(route.polyline)
+                    self.mapView.setVisibleMapRect(route.polyline.boundingMapRect, animated: true)
+                }
+            }
+        }
     }
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        let render = MKPolygonRenderer(overlay: overlay as! MKPolyline)
-        render.strokeColor = .blue
-        return render
+        let renderer = MKPolylineRenderer(polyline: overlay as! MKPolyline)
+        renderer.strokeColor = UIColor.blue
+        return renderer
     }
     
     @IBAction func getDirectionsButton(_ sender: Any) {
         self.getDirections()
+    }
+    
+    @IBAction func back(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     /*

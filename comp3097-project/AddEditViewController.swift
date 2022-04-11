@@ -43,7 +43,7 @@ class AddEditViewController: UIViewController {
                 txtPhonenumber.text = restaurant?.phonenumber
                 if let unwrappedRating = restaurant?.rating{
                     ratingSlider.value = Float(unwrappedRating)
-                    lblRating.text = String(unwrappedRating)
+                    lblRating.text = String(unwrappedRating) + "/5"
                 }
                 let tags = restaurant?.tag?.allObjects
                 var tagsToDisplay = ""
@@ -74,6 +74,9 @@ class AddEditViewController: UIViewController {
         }
     }
     
+    @IBAction func ratingChange(_ sender: Any) {
+        lblRating.text = String(Int(self.ratingSlider.value)) + "/5"
+    }
     // change id and rating
     @IBAction func save(_ sender: Any) {
         // validate values, need better method, this aborts if value is nil
@@ -82,8 +85,9 @@ class AddEditViewController: UIViewController {
         let cuisineStr = txtCuisine.text!
         let descriptionStr = txtDescription.text!
         let phonenumberStr = txtPhonenumber.text!
+        let ratingInt = Int32(ratingSlider.value)
         if action == "add" {
-            cdMgr.saveRestaurant(id: 1, name: nameStr, address: addressStr, cuisine: cuisineStr, phonenumber: phonenumberStr, desc: descriptionStr, rating: 3)
+            cdMgr.saveRestaurant(id: 1, name: nameStr, address: addressStr, cuisine: cuisineStr, phonenumber: phonenumberStr, desc: descriptionStr, rating: ratingInt)
             print("saved")
             self.dismiss(animated: true, completion: nil)
         } else {
@@ -92,6 +96,7 @@ class AddEditViewController: UIViewController {
             restaurant?.cuisine = cuisineStr
             restaurant?.restaurantDescription = descriptionStr
             restaurant?.phonenumber = phonenumberStr
+            restaurant?.rating = Int32(ratingSlider.value)
             cdMgr.updateRestaurant()
             self.dismiss(animated: true, completion: nil)
         }
