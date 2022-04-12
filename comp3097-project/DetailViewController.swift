@@ -58,6 +58,17 @@ class DetailViewController: UIViewController {
         }
     }
 
+    @IBAction func sharePressed(_ sender: UIButton) {
+        let tweetText = "your text"
+        let tweetUrl = "http://stackoverflow.com/"
+
+        let shareString = "https://twitter.com/intent/tweet?text=\(tweetText)&url=\(tweetUrl)"
+        let activityVC = UIActivityViewController(activityItems: [shareString], applicationActivities: nil)
+        
+        activityVC.popoverPresentationController?.sourceView = sender
+        activityVC.popoverPresentationController?.sourceRect = sender.frame
+        present(activityVC, animated: true)
+    }
     
 
         // MARK: - Navigation

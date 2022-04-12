@@ -78,7 +78,7 @@ extension MainViewController: UITableViewDataSource {
 
         // Configure the cell...
         cell.textLabel?.text = data[indexPath.row].name
-        //cell.cuisineLabel.text = data[indexPath.row].cuisine
+        cell.detailTextLabel?.text = data[indexPath.row].cuisine
 
         return cell
     }
