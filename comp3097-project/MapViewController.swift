@@ -9,10 +9,10 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBarDelegate {
+class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBarDelegate, MKMapViewDelegate {
 
     var restaurant: Restaurant!
-    @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var routeView: MKMapView!
     
     var locationManager = CLLocationManager()
     let regionRadius: CLLocationDistance = 1000
@@ -26,8 +26,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         locationManager.delegate = self
+        routeView.delegate = self
         
         self.setMapView()
         
@@ -38,15 +38,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
         if let unwrappedAddress = restaurant.address {
             self.getCoordinate(addressString: unwrappedAddress)
         }
-        
-        
-    
     }
     
     func getCoordinate(addressString: String) {
         localSearchRequest = MKLocalSearch.Request()
         localSearchRequest.naturalLanguageQuery = addressString
-        
         localSearch = MKLocalSearch(request: localSearchRequest)
         
         localSearch.start(completionHandler: { (searchResponse, error) in
@@ -58,30 +54,34 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
                                                                          longitude: searchResponse!.boundingRegion.center.longitude)
                 
                 self.pinAnnotationView = MKPinAnnotationView(annotation: self.pointAnnotation, reuseIdentifier: nil)
-                self.mapView.centerCoordinate = self.pointAnnotation.coordinate
+                self.routeView.centerCoordinate = self.pointAnnotation.coordinate
                 self.pinAnnotationView.pinTintColor = UIColor.green
-                self.mapView.addAnnotation(self.pinAnnotationView.annotation!)
+                self.routeView.addAnnotation(self.pinAnnotationView.annotation!)
                 
                 self.resCoordinate = self.pointAnnotation.coordinate
                 let coordinateRegion = MKCoordinateRegion(center: searchResponse!.boundingRegion.center,
                                                           latitudinalMeters: self.regionRadius * 2.0, longitudinalMeters: self.regionRadius * 2.0)
-                self.mapView.setRegion(coordinateRegion, animated: true)
+                self.routeView.setRegion(coordinateRegion, animated: true)
             }
         })
     }
     
     func setMapView(){
-        mapView.showsUserLocation = true
-        mapView.isPitchEnabled = true
-        mapView.mapType = MKMapType.standard
-        mapView.isZoomEnabled = true
-        mapView.isScrollEnabled = true
+        routeView.showsUserLocation = true
+        routeView.isPitchEnabled = true
+        routeView.mapType = MKMapType.standard
+        routeView.isZoomEnabled = true
+        routeView.isScrollEnabled = true
     }
     
     func getDirections() {
         if let destCoordinate = self.pointAnnotation.coordinate as? CLLocationCoordinate2D {
             
             let sourceCoordinate = (locationManager.location?.coordinate)!
+            //let sourceCoordinate = CLLocationCoordinate2D(latitude: 43.642, longitude: 79.3871)
+            //let destCoordinate = CLLocationCoordinate2D(latitude: 50.642, longitude: 79.3871)
+
+            
             
             let sourcePlaceMark = MKPlacemark(coordinate: sourceCoordinate)
             let destPlaceMark = MKPlacemark(coordinate: destCoordinate)
@@ -93,25 +93,42 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
             destinationRequest.source = sourceItem
             destinationRequest.destination = destItem
             destinationRequest.transportType = .automobile
-            //destinationRequest.requestsAlternateRoutes = true
+            destinationRequest.requestsAlternateRoutes = true
             
             
             let directions = MKDirections(request: destinationRequest)
             
-            directions.calculate { [unowned self] response, error in
-                guard let unwrappedResponse = response else { return }
+            directions.calculate(completionHandler: {(response, error) in
 
-                for route in unwrappedResponse.routes {
-                    self.mapView.addOverlay(route.polyline)
-                    self.mapView.setVisibleMapRect(route.polyline.boundingMapRect, animated: true)
+                if error != nil {
+                    print(error)
+                } else {
+                    if let unwrappedResponse = response {
+                        self.showRoute(unwrappedResponse)
+                        self.routeView.userTrackingMode = .follow
+                    }
                 }
+            })
+        }
+    }
+    
+    func showRoute(_ response: MKDirections.Response) {
+
+        for route in response.routes {
+
+            routeView.addOverlay(route.polyline)
+            for step in route.steps {
+                print(step.instructions)
             }
         }
     }
     
-    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        let renderer = MKPolylineRenderer(polyline: overlay as! MKPolyline)
+    func mapView(_ mapView: MKMapView, rendererFor
+            overlay: MKOverlay) -> MKOverlayRenderer {
+
+        let renderer = MKPolylineRenderer(overlay: overlay)
         renderer.strokeColor = UIColor.blue
+        renderer.lineWidth = 5.0
         return renderer
     }
     
