@@ -26,6 +26,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var tagTableView: UITableView!
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var ratingLabel: UILabel!
     var tableData:[Tag] = []
     
     // map info
@@ -53,6 +54,7 @@ class DetailViewController: UIViewController {
             addressLabel.text = unwrappedRestaurant.address
             phonenumberLabel.text = unwrappedRestaurant.phonenumber
             descriptionLabel.text = unwrappedRestaurant.restaurantDescription
+            ratingLabel.text = "\(unwrappedRestaurant.rating)/5"
             
             if let unwrappedTags = unwrappedRestaurant.tag?.allObjects as? [Tag]{
                 self.tableData = unwrappedTags
@@ -78,15 +80,16 @@ class DetailViewController: UIViewController {
     }
 
     @IBAction func sharePressed(_ sender: UIButton) {
-        let tweetText = "your text"
-        let tweetUrl = "http://stackoverflow.com/"
+        if let unwrappedCoordinate = resCoordinate {
 
-        let shareString = "https://twitter.com/intent/tweet?text=\(tweetText)&url=\(tweetUrl)"
-        let activityVC = UIActivityViewController(activityItems: [shareString], applicationActivities: nil)
-        
-        activityVC.popoverPresentationController?.sourceView = sender
-        activityVC.popoverPresentationController?.sourceRect = sender.frame
-        present(activityVC, animated: true)
+            let shareString = "https://www.google.com/maps/@\(unwrappedCoordinate.latitude),\(unwrappedCoordinate.longitude)"
+            
+            let activityVC = UIActivityViewController(activityItems: [shareString], applicationActivities: nil)
+            
+            activityVC.popoverPresentationController?.sourceView = sender
+            activityVC.popoverPresentationController?.sourceRect = sender.frame
+            present(activityVC, animated: true)
+        }
     }
     
     func getCoordinate(addressString: String) {
